@@ -5,4 +5,3 @@ Propser2 is a collection of Python3 scripts for collecting and analyzing data fr
 
 # Data source(s)
 Currently, data is solely sourced from the [third-party "FIO" API](https://doc.fnar.net). This API sources its data from players who voluntarily install a browser extension to have game data automatically scraped and posted to the API for others to consume programmatically.
-
