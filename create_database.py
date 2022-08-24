@@ -1,13 +1,23 @@
 #!/usr/bin/python3.11
-import path, sqlite3, logging
+import prosper2.path as path
+import prosper2.logging as logging
+import sqlite3
 
 log_filename = "create_database"
 logger = logging.Logger(log_filename)
 
+def list_to_string_comma_delimited(list: list[any]):
+    """
+    Takes a list and returns a string containing the list
+    members as strings delimited by commas
+    Ex: ["a", "b", 1] -> "a, b, 1" 
+    """
+    return str(list)[1:-1].replace("'", "")
+
 def create_table(cur: sqlite3.Cursor, name: str, columns: list[str]) -> None:
     # Format list of column names into SQL arguments:
     # ["a", "b", "c"] -> "a, b, c" 
-    columns = str(columns)[1:-1].replace("'", "")
+    columns = list_to_string_comma_delimited(columns)
     # Assemble the query
     query = f"""
     CREATE TABLE {name}({columns});
@@ -19,19 +29,33 @@ def create_table(cur: sqlite3.Cursor, name: str, columns: list[str]) -> None:
         cur.execute(query)
     except Exception as e:
         logger.log_error(
-            f"Table creation failed with error:",
+            f"Table creation failed with error",
             e
         )
 
-def create_table_exchange_full(cur: sqlite3.Cursor) -> None:
+def create_table_exchange_derived(cur: sqlite3.Cursor) -> None:
     """
-    Create a table named ExchangeFull with the provided cursor.
-    This table will contain data from the /exchange/full FIO API
-    endpoint.
+    Create a table named ExchangeDerived with the provided cursor.
+    This table will contain derived data from the /exchange/all FIO API
+    endpoint, including the last traded price, high/low price, etc.
     This endpoint provides all current data from all CXs, including
     discrete order data.
     """
-    raise NotImplementedError
+    name = "ExchangeDerived"
+    columns = [
+        "Price",
+        "PriceTimeEpochMs",
+        "High",
+        "AllTimeHigh",
+        "Low",
+        "AllTimeLow",
+        "Ask",
+        "AskCount",
+        "Bid",
+        "BidCount",
+
+
+    ]
 
 def create_table_exchange_all(cur: sqlite3.Cursor) -> None:
     """
@@ -60,7 +84,6 @@ def create_table_material_all(cur: sqlite3.Cursor) -> None:
     This endpoint provides current information describing all
     materials.
     """
-    
     name = "Material"
     columns = [
         "MaterialId",

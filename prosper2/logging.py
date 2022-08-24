@@ -1,5 +1,6 @@
 from inspect import trace
-import path, pathlib, enum, datetime
+import prosper2.path as path
+import pathlib, enum, datetime
 
 class Prefix(enum.Enum):
     OK = f"[OK]: "
@@ -77,4 +78,4 @@ class Logger(object):
         Logs an "WARN" status log to a log file with the name 
         and exception object provided.
         """
-        self._log(f"@ {utcnow()} | {Prefix.ERROR.value}{log_string}\n{type(exc)}\n{exc}")
+        self._log(f"@ {utcnow()} | {Prefix.ERROR.value}{log_string}: {type(exc)}: {exc}")

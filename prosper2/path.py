@@ -9,7 +9,7 @@ root: pathlib.Path = pathlib.Path("/home/rs/prosper2")
 scripts: pathlib.Path = pathlib.Path(root / "scripts")
 
 # Absolute path to the sqlite3 database (file)
-database: pathlib.Path = pathlib.Path(root / "database/database.db")
+database: pathlib.Path = pathlib.Path(root / "database.db")
 
 # Absolute path to the logging directory (folder)
-logging: pathlib.Path = pathlib.Path(root / "logging")
+logging: pathlib.Path = pathlib.Path(root / "logs")
