@@ -5,9 +5,6 @@ import pathlib
 # the one provided by default.
 root: pathlib.Path = pathlib.Path("/home/rs/prosper2")
 
-# Absolute path to the scripts directory (folder)
-scripts: pathlib.Path = pathlib.Path(root / "scripts")
-
 # Absolute path to the sqlite3 database (file)
 database: pathlib.Path = pathlib.Path(root / "database.db")
 
