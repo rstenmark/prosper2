@@ -8,7 +8,7 @@ class Prefix(enum.Enum):
     ERROR = f"[ERR]: "
 
 # Alias for datetime.datetime.utcnow
-def utcnow(): return str(datetime.datetime.utcnow())
+def utcnow(): return str(datetime.datetime.utcnow()) + " UTC+0"
 
 class Logger(object):
     """
