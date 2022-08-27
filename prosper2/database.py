@@ -91,7 +91,9 @@ def create_table_exchange_orders(cur: sqlite3.Cursor) -> None:
         "ItemCost",
         "UserNameSubmitted",
         "Timestamp",
-        "PriceTimeEpochMs"
+        "PriceTimeEpochMs",
+        "FirstSeen",
+        "LastSeen"
     ]
     create_table(cur, name, columns)
 
