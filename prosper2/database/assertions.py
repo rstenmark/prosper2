@@ -1,10 +1,10 @@
-def definition_is_dictionary(table_def: dict):
+def definition_is_dictionary(table_def: dict) -> None:
     """Ensure the definition is a dictionary"""
     # The definition must:
     # 1. Be a dictionary
     assert type(table_def) == dict
 
-def definition_has_valid_name(table_def: dict):
+def definition_has_valid_name(table_def: dict) -> None:
     """Ensure the definition has a valid name"""
     # The definition must:
     # 1. Have a key called 'name'
@@ -14,7 +14,7 @@ def definition_has_valid_name(table_def: dict):
     # 3. The name must contain at least one character
     assert len(table_def['name']) > 0
 
-def definition_has_valid_columns(table_def: dict):
+def definition_has_valid_columns(table_def: dict) -> None:
     """Ensure the definition has valid column names"""
     # The definition must:
     # 1. Have a key called 'columns'
@@ -30,7 +30,7 @@ def definition_has_valid_columns(table_def: dict):
     for v in table_def['columns']:
         assert v[0].isupper() == True
 
-def definition_has_valid_affinities(table_def: dict):
+def definition_has_valid_affinities(table_def: dict) -> None:
     """Ensure the definition has valid affinities"""
     # The definition must:
     # 1. Have a key called 'affinities'
@@ -44,6 +44,6 @@ def definition_has_valid_affinities(table_def: dict):
     for v in table_def['affinities']:
         assert v in ['TEXT', 'NUMERIC', 'INTEGER', 'REAL', 'BLOB']
 
-def definition_has_equal_length_columns_and_affinities(table_def: dict):
-    """Ensure the definiton has an equal number of columns and affinities"""
+def definition_has_equal_length_columns_and_affinities(table_def: dict) -> None:
+    """Ensure the definition has an equal number of columns and affinities"""
     assert len(table_def['columns']) == len(table_def['affinities'])
