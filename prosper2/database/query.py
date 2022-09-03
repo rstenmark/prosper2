@@ -1,5 +1,4 @@
 import prosper2.database.definitions as table_definitions
-from prosper2.helpers import list_to_string_comma_delimited
 from prosper2.logging import Logger
 import sqlite3
 
