@@ -1,5 +1,5 @@
 from inspect import trace
-import prosper2.path as path
+from . import path
 import pathlib, enum, datetime
 
 class Prefix(enum.Enum):
